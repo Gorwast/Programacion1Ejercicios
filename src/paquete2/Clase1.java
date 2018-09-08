@@ -28,6 +28,7 @@ public class Clase1 {
             clase.ImprimirConsola(nombre);
         }
         
-        System.out.println(clase.metodo());
+        cadena = clase.metodo();
+        System.out.println(cadena);
     }
 }
