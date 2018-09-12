@@ -11,7 +11,7 @@ package Tarea1.tres;
  */
 public class Numeros {
     
-    public static void numeroMayor(int a, int b) {
+    public void numeroMayor(int a, int b) {
         if (a > b) {
             System.out.println(a + " es mayor");
         } else if (a < b) {
@@ -21,10 +21,10 @@ public class Numeros {
         }
     }
     
-    public static void numerosMultiplos(int a,int b){
+    public void numerosMultiplos(int a,int b){
         if (a % b == 0) {
             System.out.println("ambos numeros son multiplos");
-        } else if (a % b != 0) {
+        } else {
             System.out.println("Ambos numeros no son multiplos");
         }
     }
