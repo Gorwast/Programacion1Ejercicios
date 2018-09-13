@@ -11,17 +11,23 @@ public class Principal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Ordenar orden = new Ordenar();
-        int enteros[] = new int[5];
+        int lenght = 5;
+        int enteros[] = new int[lenght];
+        String opcion1;
+        char opcion;
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < lenght; i++) {
             System.out.print("Introduzca el valor del indice[" + i + "]: ");
             enteros[i] = sc.nextInt();
         }
         System.out.println("¿Desea ordenar el arreglo de forma acendente (a) o descendente (d)?");
-        if (sc.nextLine() == "a") {
-            
-        } else if (sc.nextLine() == "d") {
-            
+        opcion1 = sc.next();
+        opcion = opcion1.charAt(0);
+        
+        if (opcion == 'a') {
+            orden.ordenarArrayAsc(enteros);
+        } else if (opcion == 'd') {
+            orden.ordenarArrayDesc(enteros);
         } else {
             
         }

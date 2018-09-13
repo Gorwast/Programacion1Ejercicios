@@ -7,11 +7,11 @@ package Tarea1.dos;
  */
 public class Ordenar {
     
-    static void ordenarArray(int[]array) {
+    public void ordenarArrayAsc(int[]array) {
         int n = array.length;
         int var = 0;
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < (n-i); j++) {
+            for (int j = 1; j < (n-i); j++) {
                 if (array[j-1] > array[j]) {
                     var = array[j-1];
                     array[j-1] =array[j];
@@ -19,21 +19,26 @@ public class Ordenar {
                 }
             }
         }
+        for (int k = 0; k < n; k++) {
+            System.out.println(array[k]);
+        }
     }
     
-    public String selectionSort(int[] ar,int lenght){
-        int b[] = new int[lenght];
-        for (int i = 0; i < ar.length; i++) {
-            int min = i;
-            for (int j = i+1; j < ar.length; j++) {
-                if ((ar[j]) < ar[min]){
-                    min = j;
+    public void ordenarArrayDesc(int[]array) {
+        int n = array.length;
+        int var = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < (n-i); j++) {
+                if (array[j-1] > array[j]) {
+                    var = array[j-1];
+                    array[j-1] =array[j];
+                    array[j] = var;
                 }
             }
-            int temp = ar[i];
-            ar[i] = ar[min];
-            ar[min] = temp;
         }
-        return ar.toString();
+        for (int k = n-1; k > 0; k--) {
+            System.out.println(array[k]);
+        }
+
     }
 }
