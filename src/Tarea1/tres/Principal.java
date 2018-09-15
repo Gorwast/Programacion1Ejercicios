@@ -17,7 +17,7 @@ public class Principal {
         a = sc.nextInt();
         System.out.print("Introduzca el segundo numero: ");
         b = sc.nextInt();
-        System.out.println("Desea saber cual de los 2 numeros es mayor(mayor) o desea saber si ambos numeros son multiplos(mul)?");
+        System.out.println("Desea saber cual de los 2 numeros es mayor(mayor) o desea saber si ambos numeros son multiplos(multi)?");
         for (int i = 0; i < 2; i++) {
             if (null == sc.nextLine()) {
                 System.out.println("No he entendido lo que me pediste, introduce el comando otra vez");
@@ -29,6 +29,8 @@ public class Principal {
                 case "multi":
                     num.numerosMultiplos(a, b);
                     break;
+                case "end":
+                    i = 3;
                 default:
                     System.out.println("No he entendido lo que me pediste, introduce el comando otra vez");
                     i = 0;

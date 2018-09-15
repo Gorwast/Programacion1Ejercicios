@@ -7,13 +7,13 @@ package Tarea1.cuatro;
  */
 public class Cadena {
     
-    public String minuscula(String a){
+    public void minuscula(String a){
         a = a.toLowerCase();
-        return a;
+        System.out.println("Tu nueva cadena es: " + a);
     }
     
-    public String mayuscula(String a) {
+    public void mayuscula(String a) {
         a = a.toUpperCase();
-        return a;
+        System.out.println("Tu nueva cadena es: " + a);
     }
 }

@@ -17,7 +17,7 @@ public class Numeros {
     }
     
     public void numerosMultiplos(int a, int b){
-        if (a % b == 0) {
+        if (a % b == 0 || b % a == 0) {
             System.out.println("ambos numeros son multiplos");
         } else {
             System.out.println("Ambos numeros no son multiplos");

@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author dii
  */
-public class area {
+public class Principal {
 
     /**
      * @param args the command line arguments

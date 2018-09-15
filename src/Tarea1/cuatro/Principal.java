@@ -16,10 +16,9 @@ public class Principal {
         System.out.println("Desea cambiar la cadena a minusculas(m) o mayusculas(M)?");
         respuesta = sc.nextLine();
         if ("m".equals(respuesta)) {
-            System.out.print("Su nueva cadena es: " + cadena.minuscula(chain));
+            cadena.minuscula(chain);
         } else if ("M".equals(respuesta)) {
             cadena.mayuscula(chain);
-            System.out.print("Su nueva cadena es: " + chain);
         }
         
     }
