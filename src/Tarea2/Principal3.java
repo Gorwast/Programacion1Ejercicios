@@ -1,3 +1,4 @@
+
 package Tarea2;
 
 import java.util.Scanner;
@@ -40,32 +41,46 @@ public class Principal3 {
             System.out.println("\n");
         }
 
-        sumaFilas(matriz, filas, columnas);
-        sumaColumnas(matriz, filas, columnas);
+        System.out.println(sumaFilas(matriz, filas, columnas));
+        System.out.println(sumaColumnas(matriz, filas, columnas));
     }
 
-    public static void sumaColumnas(int matriz[][], int filas, int columnas) {
+    public static String sumaColumnas(int matriz[][], int filas, int columnas) {
         //Suma de columnas 
-        int suma = 0;
+        String  total = "";
+        int mayor = 0, suma = 0;
+        
         for (int i = 0; i < columnas; i++) {
             for (int j = 0; j < filas; j++) {
                 suma = suma + matriz[j][i];
             }
             System.out.println("columna " + i + ": " + suma);
+            if (suma > mayor) {
+                mayor = suma;
+                total = "La columna mayor fue la numero " + i;
+            }
             suma = 0;
         }
+        return total;
     }
+    
 
-    public static void sumaFilas(int matriz[][], int filas, int columnas) {
-        int suma = 0;
+    public static String sumaFilas(int matriz[][], int filas, int columnas) {
+        String total = "";
+        int suma = 0, mayor = 0;
         //Suma de filas
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 suma = suma + matriz[i][j];
             }
             System.out.println("fila " + i + ": " + suma);
+            if (suma > mayor) {
+                mayor = suma;
+                total = "La fila mayor fue la numero " + i;
+            }
             suma = 0;
         }
+        return total;
     }
 
 }

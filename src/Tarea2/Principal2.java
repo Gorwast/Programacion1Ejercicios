@@ -24,7 +24,7 @@ public class Principal2 {
             }
         }
 
-        //matrizB[1][2] = 3;
+        matrizB[2][1] = 2345;
         /*
         Introducir manualmente los valores
         for (int i = 0; i < filas; i++) {
@@ -45,6 +45,8 @@ public class Principal2 {
                 }
             }
         }
+        
+        //comprobar la igualdad
         if (igualdad == true) {
             System.out.println("Ambas matricez son iguales");
         } else {

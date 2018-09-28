@@ -21,11 +21,17 @@ public class Principal5 {
     public static void factorial(int a) {
         int numeroFactor = a;
         int total = 1;
-        for (int i = a; i > 0; i--) {
+        if (a == 0) {
+            System.out.println("Factorial de " + numeroFactor + ": 1");
+        } else {
+            for (int i = a; i > 0; i--) {
             total = total * a;
             a--;
         }
         System.out.println("Factorial de " + numeroFactor + ": " + total);
+        }
+        
+        
     }
 
 }

@@ -15,17 +15,16 @@ public class Principal4 {
         int i = 0, contador = 0;
         boolean noEncontrado;
 
-        /*
-        Introducir manualmente la cadena
+        
         System.out.print("Introduzca una cadena: ");
         cadena = sc.nextLine();
-         */
+         
         cadena = cadena.toLowerCase();
         cadenaSplit = cadena.split(split);
-
+        
         System.out.println("Palabra que desea encontrar");
-        clave = sc.next();
-
+        clave = sc.next().toLowerCase();
+        
         Principal4.palabraRepetida(cadenaSplit, clave);
 
     }

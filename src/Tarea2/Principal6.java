@@ -16,21 +16,22 @@ public class Principal6 {
         System.out.print("Introduce una cadena: ");
         cadena = sc.nextLine();
 
-        inverse(cadena);
+        System.out.println(inverse(cadena));
     }
 
-    public static void inverse(String cadena) {
+    public static String inverse(String cadena) {
+        String cadenaReves = "";
         int i;
         i = (cadena.length() - 1);
         do {
             if (cadena.length() == 0) {
                 break;
             } else {
-                System.out.print(cadena.charAt(i));
+                cadenaReves = cadenaReves + cadena.charAt(i);
                 i--;
             }
         } while (i >= 0);
-
+        return cadenaReves;
     }
 
 }
