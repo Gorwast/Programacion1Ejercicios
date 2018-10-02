@@ -1,4 +1,4 @@
-package Tarea1.uno;
+package Tarea1;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author dii
  */
-public class Principal {
+public class Principal1 {
 
     /**
      * @param args the command line arguments

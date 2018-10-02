@@ -1,9 +1,9 @@
 
-package Tarea1.cuatro;
+package Tarea1;
 
 import java.util.Scanner;
 
-public class Principal {
+public class Principal4 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

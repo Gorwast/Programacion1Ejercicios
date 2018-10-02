@@ -1,5 +1,5 @@
 
-package Tarea1.tres;
+package Tarea1;
 
 /**
  *

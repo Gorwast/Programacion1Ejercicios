@@ -1,12 +1,13 @@
 
-package Tarea1.tres;
+package Tarea1;
 
+import Tarea1.Numeros;
 import java.util.Scanner;
 
 /**
  * @author lk23
  */
-public class Principal {
+public class Principal2 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

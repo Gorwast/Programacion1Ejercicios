@@ -1,5 +1,5 @@
 
-package Tarea1.uno;
+package Tarea1;
 
 /**
  *

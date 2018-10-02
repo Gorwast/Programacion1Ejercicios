@@ -1,12 +1,13 @@
 
-package Tarea1.dos;
+package Tarea1;
 
+import Tarea1.Ordenar;
 import java.util.Scanner;
 
 /**
  * @author dii
  */
-public class Principal {
+public class Principal3 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

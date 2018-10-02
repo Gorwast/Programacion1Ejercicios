@@ -1,5 +1,5 @@
 
-package Tarea1.dos;
+package Tarea1;
 
 /**
  *
