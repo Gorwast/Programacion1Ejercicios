@@ -17,15 +17,18 @@ public class Clase1 {
         System.out.print("Introduce una cadena: ");
         cadena = sc.nextLine();
         clase.imprimir(cadena);
-        clase.imprimir2(cadena);
+        imprimir2(cadena);
         subClase.imprimir3(cadena);
     }
 
     void imprimir(String c) {
         System.out.println("]La cadena es: " + c);
     }
+    void imprimir(char c) {
+        System.out.println("]El caracter es: " + c);
+    }
     //metodo sobrecargado
-    void imprimir(String c, String b) {
+    static void imprimir2(String c) {
         System.out.println("]La cadena es: " + c);
     }
 }
