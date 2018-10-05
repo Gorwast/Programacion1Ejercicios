@@ -11,7 +11,7 @@ public class Areas {
     float base, altura, area;
     Areas(){
     }
-    Areas(float b, float a){
+    public Areas(float b, float a){
         base = b;
         altura = a;
     }
@@ -40,17 +40,17 @@ public class Areas {
         this.area = area;
     }
     
-    void triangulo(){
+    public void triangulo(){
         area = (base * altura)/2;
         imprimir();
     }
     
-    void rectangulo(){
+    public void rectangulo(){
         area = base * altura;
         imprimir();
     }
     
-    void imprimir(){
+    public void imprimir(){
         System.out.println("El area es: " + area);
     }
 }
