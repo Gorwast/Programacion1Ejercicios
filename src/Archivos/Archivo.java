@@ -14,7 +14,6 @@ public class Archivo {
         for (int i = 0; i < listaArchivos.length; i++) {
             System.out.println(listaArchivos[i]);
         }
-        readFile(d);
         
         File f = new File("prueba.txt");
         
