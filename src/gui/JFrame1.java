@@ -1,8 +1,12 @@
-
 package gui;
 
 import java.awt.Graphics;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
@@ -50,8 +54,8 @@ public class JFrame1 extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -131,17 +135,37 @@ public class JFrame1 extends javax.swing.JFrame {
         jMenu2.setText("Editar");
 
         jMenuItem8.setText("Copiar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
-
-        jMenuItem10.setText("Pegar");
-        jMenu2.add(jMenuItem10);
 
         jMenuItem11.setText("Cortar");
         jMenuItem11.setToolTipText("");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem11);
+
+        jMenuItem10.setText("Pegar");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem10);
         jMenu2.add(jSeparator1);
 
         jMenuItem12.setText("Rehacer");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem12);
 
         jMenuItem13.setText("Deshacer");
@@ -194,7 +218,7 @@ public class JFrame1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        JOptionPane.showMessageDialog(jMenu1,"BlockJava v 0.1 \n Autor: Mr.");
+        JOptionPane.showMessageDialog(jMenu1, "BlockJava v 0.1 \n Autor: Mr.");
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -207,18 +231,37 @@ public class JFrame1 extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         JFileChooser jf = new JFileChooser();
-        FileFilter filtro = new FileNameExtensionFilter("Archivos txt","txt");
+        FileFilter filtro = new FileNameExtensionFilter("Archivos txt", "txt");
         jf.addChoosableFileFilter(filtro);
-
         int respuesta;
         String nombre;
         File archivo;
-        respuesta = jf.showOpenDialog(jMenu1);
-        if (respuesta == 0){
-            archivo = jf.getSelectedFile();
-
+        try {
+            respuesta = jf.showOpenDialog(jMenu1);
+            if (respuesta == 0) {
+                FileReader reader = new FileReader(jf.getSelectedFile());
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JFrame1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        jTextArea1.copy();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        jTextArea1.paste();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        jTextArea1.cut();
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        jTextArea1
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
