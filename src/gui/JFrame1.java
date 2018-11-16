@@ -56,12 +56,12 @@ public class JFrame1 extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -101,7 +101,7 @@ public class JFrame1 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Editor de texto");
+        setTitle("Block de Notas");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(480, 360));
@@ -148,13 +148,17 @@ public class JFrame1 extends javax.swing.JFrame {
 
         jMenu2.setText("Editar");
 
-        jMenuItem8.setText("Copiar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem12.setText("Rehacer");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem8);
+        jMenu2.add(jMenuItem12);
+
+        jMenuItem13.setText("Deshacer");
+        jMenu2.add(jMenuItem13);
+        jMenu2.add(jSeparator1);
 
         jMenuItem11.setText("Cortar");
         jMenuItem11.setToolTipText("");
@@ -172,18 +176,14 @@ public class JFrame1 extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem10);
-        jMenu2.add(jSeparator1);
 
-        jMenuItem12.setText("Rehacer");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem8.setText("Copiar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem12);
-
-        jMenuItem13.setText("Deshacer");
-        jMenu2.add(jMenuItem13);
+        jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
 
@@ -233,15 +233,17 @@ public class JFrame1 extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        JOptionPane.showMessageDialog(jMenu1, "BlockJava v 0.1 \n Autor: Mr.");
+        JOptionPane.showMessageDialog(jMenu1, "BlockJava v 0.1 \n Autor: Mr."); //
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        this.dispose();
+        System.exit(0); //System exit
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -252,18 +254,14 @@ public class JFrame1 extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         FileFilter filtro = new FileNameExtensionFilter("Archivos txt", "txt");
         jf.addChoosableFileFilter(filtro);
-        int respuesta;
-        String nombre;
+
         File archivo;
-        
+        String textLine;
+        jf.showOpenDialog(jMenu1);
+
         try {
-            String textLine;
-            FileReader fr = new FileReader("ad.txt");
-            BufferedReader reader = new BufferedReader(fr);
-            while ((textLine = reader.readLine()) != null) {
-                textLine = reader.readLine();
-                jTextArea1.read(reader, "jTextArea1");
-            }
+            FileReader reader = new FileReader(jf.getSelectedFile());
+            jTextArea1.read(reader, jf.getName()); //Object of JTextArea
         } catch (IOException ioe) {
             System.err.println(ioe);
         }
@@ -288,6 +286,10 @@ public class JFrame1 extends javax.swing.JFrame {
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         jFrame2.toFront();
     }//GEN-LAST:event_jMenu7ActionPerformed
+
+    private static void guardar() {
+
+    }
 
     /**
      * @param args the command line arguments
