@@ -1,9 +1,11 @@
 package gui;
 
 import java.awt.Graphics;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +43,7 @@ public class JFrame1 extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jFrame1 = new javax.swing.JFrame();
+        jFrame2 = new javax.swing.JFrame();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -83,6 +86,17 @@ public class JFrame1 extends javax.swing.JFrame {
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -174,6 +188,11 @@ public class JFrame1 extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu7.setText("Opciones");
+        jMenu7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu7ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu7);
 
         jMenu3.setText("Ayuda");
@@ -236,14 +255,17 @@ public class JFrame1 extends javax.swing.JFrame {
         int respuesta;
         String nombre;
         File archivo;
+        
         try {
-            respuesta = jf.showOpenDialog(jMenu1);
-            if (respuesta == 0) {
-                FileReader reader = new FileReader(jf.getSelectedFile());
+            String textLine;
+            FileReader fr = new FileReader("ad.txt");
+            BufferedReader reader = new BufferedReader(fr);
+            while ((textLine = reader.readLine()) != null) {
+                textLine = reader.readLine();
+                jTextArea1.read(reader, "jTextArea1");
             }
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(JFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ioe) {
+            System.err.println(ioe);
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -260,8 +282,12 @@ public class JFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        jTextArea1
+
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
+        jFrame2.toFront();
+    }//GEN-LAST:event_jMenu7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +327,7 @@ public class JFrame1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
