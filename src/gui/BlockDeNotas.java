@@ -142,6 +142,11 @@ public class BlockDeNotas extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         jMenuItem6.setText("Cerrar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem6);
         jMenu1.add(jSeparator3);
 
@@ -263,14 +268,15 @@ public class BlockDeNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        this.jf = new JFileChooser();
+        //Abrir un archivo
+        this.jf = new JFileChooser(); 
         jf.addChoosableFileFilter(this.filtroTxt);
-
+        
         jf.showOpenDialog(jMenu1);
         try {
             FileReader reader = new FileReader(jf.getSelectedFile());
             this.archivo = jf.getSelectedFile();
-            jTextArea1.read(reader, jf.getName()); //Escribir en TextArea
+            jTextArea1.read(reader, jf.getName());
         } catch (IOException e) {
             System.err.println("Error de archivo: " + e.getMessage());
         }
@@ -289,6 +295,7 @@ public class BlockDeNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //guardar
         try {
             FileWriter f = new FileWriter(this.archivo, false);
             f.write(jTextArea1.getText());
@@ -299,13 +306,15 @@ public class BlockDeNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        JOptionPane.showInputDialog("Nombre del archivo");
-        File f = new File(JOptionPane);
-        
+        //Nuevo archivo
+        String name = JOptionPane.showInputDialog("Nombre del archivo");
+        this.archivo = new File(name + ".txt");
+        jTextArea1.setText("");
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        if (manager.canUndo()) {
+        //Deshacer
+        if (manager.canUndo()) { 
             this.manager.undo();
         } else {
             System.err.print("error");
@@ -313,8 +322,26 @@ public class BlockDeNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        jTextArea1.getDocument().addUndoableEditListener(this.manager);
+        jTextArea1.getDocument().addUndoableEditListener(this.manager); //ventana activa
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        //Cerrar archivo
+        int a = JOptionPane.showConfirmDialog(rootPane, "Desea guardar el archivo?", "Guardar archivo", WIDTH);
+        if (a == 0) {
+            try {
+                FileWriter f = new FileWriter(this.archivo, false);
+                f.write(jTextArea1.getText());
+                jTextArea1.setText("");
+                this.archivo = null;
+                f.close();
+            } catch (IOException ex) {
+                Logger.getLogger(BlockDeNotas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (a == 1) {
+            jTextArea1.setText("");
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
