@@ -14,6 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.undo.UndoManager;
 
 /**
  * @author dii
@@ -26,7 +27,8 @@ public class BlockDeNotas extends javax.swing.JFrame {
     private File archivo;
     private JFileChooser jf;
     private FileFilter filtroTxt = new FileNameExtensionFilter("Documentos de texto", "(*.txt)");
-    
+    private UndoManager manager = new UndoManager();
+
     public BlockDeNotas() {
         initComponents();
     }
@@ -91,6 +93,11 @@ public class BlockDeNotas extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(480, 360));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -150,10 +157,17 @@ public class BlockDeNotas extends javax.swing.JFrame {
 
         jMenu2.setText("Editar");
 
+        jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem13.setText("Deshacer");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem13);
         jMenu2.add(jSeparator1);
 
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setText("Cortar");
         jMenuItem11.setToolTipText("");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +177,7 @@ public class BlockDeNotas extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem11);
 
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem10.setText("Pegar");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +186,7 @@ public class BlockDeNotas extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem10);
 
+        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem8.setText("Copiar");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,11 +249,12 @@ public class BlockDeNotas extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         //Guardar como
         this.jf = new JFileChooser();
+        jf.addChoosableFileFilter(this.filtroTxt);
         jf.showSaveDialog(jLabel2);
-        
+
         this.archivo = jf.getSelectedFile();
         try {
-            FileWriter f = new FileWriter(this.archivo,false);
+            FileWriter f = new FileWriter(this.archivo, false);
             f.write(jTextArea1.getText());
             f.close();
         } catch (IOException ex) {
@@ -248,7 +265,7 @@ public class BlockDeNotas extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.jf = new JFileChooser();
         jf.addChoosableFileFilter(this.filtroTxt);
-        
+
         jf.showOpenDialog(jMenu1);
         try {
             FileReader reader = new FileReader(jf.getSelectedFile());
@@ -273,7 +290,7 @@ public class BlockDeNotas extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         try {
-            FileWriter f = new FileWriter(this.archivo,false);
+            FileWriter f = new FileWriter(this.archivo, false);
             f.write(jTextArea1.getText());
             f.close();
         } catch (IOException ex) {
@@ -282,9 +299,22 @@ public class BlockDeNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JOptionPane.showInputDialog("Nombre del archivo");
+        File f = new File(JOptionPane);
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        if (manager.canUndo()) {
+            this.manager.undo();
+        } else {
+            System.err.print("error");
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        jTextArea1.getDocument().addUndoableEditListener(this.manager);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
