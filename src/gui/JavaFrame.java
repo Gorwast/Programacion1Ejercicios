@@ -96,6 +96,11 @@ public class JavaFrame extends javax.swing.JFrame {
         });
 
         jCheckBox1.setText("Check 1");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jCheckBox3.setText("Check 3");
         jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
@@ -225,19 +230,23 @@ public class JavaFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String cadena = "", check = "";
         if (jCheckBox1.isSelected()) {
-            cadena += "hola";
-            check += "\n box 1";
+            cadena += "hola ";
+            //check += "box 1 ";
         }
         if (jCheckBox4.isSelected()) {
-            cadena += "mundo";
-            check += " box 2";
+            cadena += "mundo ";
+            //check += "box 2 ";
         }
         if (jCheckBox3.isSelected()) {
-            cadena += "java";
-            check += " box 3";
+            cadena += "java ";
+            //check += "box 3 ";
         }
         JOptionPane.showMessageDialog(this, cadena + check);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
