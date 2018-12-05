@@ -75,9 +75,7 @@ public class Icon extends javax.swing.JFrame {
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         Icon a = new Icon();
-        ImageIcon icon = a.createImageIcon("proyectoProgramacion1/src/images/Dinero.png","nice");
-        Image imagen = icon.getImage();
-        imagen.getScaledInstance(WIDTH, HEIGHT, WIDTH);
+        ImageIcon icon = new ImageIcon("C:\\Users\\dii\\Documents\\NetBeansProjects\\programacion1Ejercicios\\src\\images\\" + jList1.getSelectedValue() + ".png","nice");
         jLabel1.setIcon(icon);
     }//GEN-LAST:event_jList1ValueChanged
 
